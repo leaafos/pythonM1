@@ -1,0 +1,91 @@
+@baseUrl = http://127.0.0.1:5051
+@apiKey = api-key-123
+
+### Ping API
+GET {{baseUrl}}/
+
+### Lister les villes
+GET {{baseUrl}}/villes
+X-API-Key: {{apiKey}}
+
+### Lister les foyers
+GET {{baseUrl}}/foyers
+X-API-Key: {{apiKey}}
+
+### Lister les foyers d'une ville (ville_id=1)
+GET {{baseUrl}}/villes/1/foyers
+X-API-Key: {{apiKey}}
+
+### Lister les prix du gaz d'une ville (ville_id=1)
+GET {{baseUrl}}/villes/1/prix-gaz
+X-API-Key: {{apiKey}}
+
+### Lister les consommations d'un foyer (foyer_id=1)
+GET {{baseUrl}}/foyers/1/consommation
+X-API-Key: {{apiKey}}
+
+### Afficher l'énergie d'un foyer (foyer_id=1)
+GET {{baseUrl}}/energie/foyer/1?mois=1&annee=2026
+X-API-Key: {{apiKey}}
+
+### Afficher l'énergie d'une ville (ville_id=1)
+GET {{baseUrl}}/energie/ville/1?mois=1&annee=2026
+X-API-Key: {{apiKey}}
+
+### Stats détaillées (toutes villes) sur une période
+GET {{baseUrl}}/stats/consommation?start=2026-01&end=2026-12
+X-API-Key: {{apiKey}}
+
+### Stats détaillées filtrées par ville (ville_id=1)
+GET {{baseUrl}}/stats/consommation?ville_id=1&start=2026-01&end=2026-12
+X-API-Key: {{apiKey}}
+
+### Stats agrégées par ville sur une période
+GET {{baseUrl}}/stats/consommation/par-ville?start=2026-01&end=2026-12
+X-API-Key: {{apiKey}}
+
+### Créer une ville
+POST {{baseUrl}}/villes
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+  "nom": "Paris",
+  "region": "Ile-de-France"
+}
+
+### Créer un foyer
+POST {{baseUrl}}/foyers
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+  "adresse": "123 Rue Test",
+  "ville_id": 1,
+  "nombre_habitants": 4,
+  "type_chauffage": "gaz"
+}
+
+### Créer un prix du gaz
+POST {{baseUrl}}/prix-gaz
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+  "ville_id": 1,
+  "mois": 1,
+  "annee": 2026,
+  "prix_par_kwh": 0.15
+}
+
+### Créer une consommation
+POST {{baseUrl}}/consommation
+Content-Type: application/json
+X-API-Key: {{apiKey}}
+
+{
+  "foyer_id": 1,
+  "mois": 1,
+  "annee": 2026,
+  "quantite_kwh": 150
+}

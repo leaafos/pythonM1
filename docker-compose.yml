@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    container_name: energy-api
+    ports:
+      - "5000:5000"
+    environment:
+      - FLASK_APP=application.py
+      - FLASK_ENV=development
+    volumes:
+      - .:/usr/src/app
+    command: python -m flask run --host=0.0.0.0
