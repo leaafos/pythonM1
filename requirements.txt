@@ -2,7 +2,7 @@ flask
 flask-cors
 
 # — Core —
-requests==2.32.3
+requests==2.33.0
 
 # — Tests —
-pytest==8.4.2
+pytest==9.0.3
